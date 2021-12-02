@@ -5,13 +5,9 @@ import { history } from '@/_helpers'
 import { authenticationService } from '@/_services'
 import { LoginPage } from '@/LoginPage'
 import { SearchVehicle } from '@/SearchVehicle'
-import { SalePage } from '../SalePage/SalePage'
+import { SalePage, SalesByColor, SalesByType, SalesByMfr, SalesByGross } from '../SalePage'
 import { AddVehiclePage } from '../AddVehiclePage/AddVehiclePage'
 import { RepairPage } from '../RepairPage/RepairPage'
-import { SalesByColor } from '../SalePage/SalesbyColor'
-import { SalesByType } from '../SalePage/SalesbyType'
-import { SalesByMfr } from '../SalePage/SalesbyMfr'
-import { SalesByGross } from '../SalePage/SalesbyGross'
 import { PartStatistics } from '../PartStatistics'
 import { BelowCostSales } from '../BelowCostSales'
 import { AveTimeInventory } from '../AveTimeInventory'
@@ -111,8 +107,6 @@ class App extends React.Component {
                         <Route exact path="/repairsmanufacturer" component={RepairsManufacturer} />
                         <Route exact path="/avetimeinventory" component={AveTimeInventory} />
                         <Route exact path="/monthlysales" component={MonthlySales} />
-
-
                     </div>
                 </ChakraProvider>
             </Router>

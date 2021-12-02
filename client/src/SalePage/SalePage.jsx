@@ -22,19 +22,6 @@ const FlexWrapper = styled.div`
     display: flex;
     margin: 25px;
 `
-const SearchContainer = styled.div`
-    margin: 10px;
-`
-
-const FlexItems = styled.div`
-    width: 30%;
-    flex-grow: 1;
-    min-height: auto;
-    box-sizing: border-box;
-    margin: 10px;
-    justify-content: space-between;
-    text-align: center;
-`
 const ButtonLeftWrapper = styled.div`
     justify-content: flex-end;
     display: flex;
