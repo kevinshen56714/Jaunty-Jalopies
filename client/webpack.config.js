@@ -1,6 +1,6 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+// const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const endpoint =
     process.env.NODE_ENV === 'production'
         ? `https://jaunty-jalopies.herokuapp.com/`
@@ -30,8 +30,9 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
+            favicon: './public/favicon.ico',
         }),
-        new FaviconsWebpackPlugin('./public/favicon.ico'),
+        // new FaviconsWebpackPlugin('./public/favicon.ico'),
     ],
     devServer: {
         historyApiFallback: true,

@@ -10,6 +10,7 @@
   "scripts": {
     "start": "cd server && node ./server.js",
     "start:dev": "nodemon ./server.js",
+		"heroku-postbuild": "npm i",
     "lint": "eslint ./"
   },
   "dependencies": {
