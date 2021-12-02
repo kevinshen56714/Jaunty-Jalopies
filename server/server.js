@@ -1,7 +1,7 @@
 ﻿require('rootpath')()
 const express = require('express')
 const cors = require('cors')
-const errorHandler = require('_middleware/error-handler')
+const errorHandler = require('./_middleware/error-handler')
 
 const app = express()
 
