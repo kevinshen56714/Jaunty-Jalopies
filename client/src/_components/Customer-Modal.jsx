@@ -35,6 +35,7 @@ export default function CustomerModal({ onClose, setCustomerData, toast }) {
     const [error, setError] = useState('')
     const [displayAddCustomerButton, setDisplayAddCustomerButton] = useState(false)
     const [displayAddCustomerSection, setDisplayAddCustomerSection] = useState(false)
+
     const addCustomerInitialValues = {
         customertype: customerType,
         firstname: '',
@@ -50,6 +51,7 @@ export default function CustomerModal({ onClose, setCustomerData, toast }) {
         bname: '',
         btitle: '',
     }
+
     const addCustomerValidationSchema = Yup.object().shape({
         firstname: Yup.string().required('First name is required'),
         lastname: Yup.string().required('Last name is required'),
@@ -95,6 +97,7 @@ export default function CustomerModal({ onClose, setCustomerData, toast }) {
             then: Yup.string().required('Business title is required'),
         }),
     })
+
     const addCustomerFields = [
         { name: 'firstname', title: 'First Name', isRequired: true },
         { name: 'lastname', title: 'Last Name', isRequired: true },

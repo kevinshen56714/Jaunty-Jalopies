@@ -83,14 +83,6 @@ const OuterContainer = styled.div`
     box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 `
 
-const FormWrapper = styled.div`
-    margin: 10px 0;
-`
-
-const LabelWrapper = styled.label`
-    padding-right: 1ch;
-`
-
 const vehicleDetailsList = {
     vin: 'VIN',
     vehicletype: 'Vehicle Type',

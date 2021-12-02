@@ -26,15 +26,16 @@ const SalesByColor = () => {
     const [year, setYear] = useState([])
     const [allTime, setAlltime] = useState([])
 
+    const getAll = async () => {
+        const getMonth = await Axios.get(`${config.apiUrl}/sale/salesbycolor/month`)
+        const getYear = await Axios.get(`${config.apiUrl}/sale/salesbycolor/year`)
+        const getAlltime = await Axios.get(`${config.apiUrl}/sale/salesbycolor/alltime`)
+        setMonth(getMonth.data)
+        setYear(getYear.data)
+        setAlltime(getAlltime.data)
+    }
+
     useEffect(() => {
-        const getAll = async () => {
-            const getMonth = await Axios.get(`${config.apiUrl}/sale/salesbycolor/month`)
-            const getYear = await Axios.get(`${config.apiUrl}/sale/salesbycolor/year`)
-            const getAlltime = await Axios.get(`${config.apiUrl}/sale/salesbycolor/alltime`)
-            setMonth(getMonth.data)
-            setYear(getYear.data)
-            setAlltime(getAlltime.data)
-        }
         getAll()
     }, [])
 
