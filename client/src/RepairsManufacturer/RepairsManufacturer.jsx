@@ -1,6 +1,6 @@
 import React from 'react'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
+
 import { Heading } from '@chakra-ui/react'
 import ReactTable from 'react-table-6'
 import styled from 'styled-components'
@@ -78,12 +78,8 @@ class RepairsManufacturer extends React.Component {
     }
 
     async componentDidMount() {
-        const repairs_manufacturer_data = await Axios.get(
-            `${config.apiUrl}/repairsmanufacturer/allmfr`
-        )
-        const repairs_manufacturer_dd_data = await Axios.get(
-            `${config.apiUrl}/repairsmanufacturer/drilldownmfr/`
-        )
+        const repairs_manufacturer_data = await Axios.get(`/repairsmanufacturer/allmfr`)
+        const repairs_manufacturer_dd_data = await Axios.get(`/repairsmanufacturer/drilldownmfr/`)
         Promise.all([repairs_manufacturer_data, repairs_manufacturer_dd_data]).then(
             ([response_rm, response_rmdd]) => {
                 response_rm.data.map((item) => {

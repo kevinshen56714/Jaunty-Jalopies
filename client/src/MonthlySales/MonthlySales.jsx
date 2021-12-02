@@ -1,6 +1,6 @@
 import React from 'react'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
+
 import { Heading } from '@chakra-ui/react'
 import ReactTable from 'react-table-6'
 import styled from 'styled-components'
@@ -67,10 +67,8 @@ class MonthlySales extends React.Component {
     }
 
     componentDidMount() {
-        const monthly_sales_data = Axios.get(`${config.apiUrl}/monthlysales/allmonths`)
-        const monthly_sales_dd_data = Axios.get(
-            `${config.apiUrl}/monthlysales/drilldownmonthlysales`
-        )
+        const monthly_sales_data = Axios.get(`/monthlysales/allmonths`)
+        const monthly_sales_dd_data = Axios.get(`/monthlysales/drilldownmonthlysales`)
         Promise.all([monthly_sales_data, monthly_sales_dd_data]).then(
             ([response_ms, response_msdd]) => {
                 response_ms.data.map((item) => {
@@ -112,7 +110,9 @@ class MonthlySales extends React.Component {
                                 <br />
                                 <ReactTable
                                     data={
-                                        this.state.monthlysalesdd[row.sale_year.toString() + row.sale_month.toString()]
+                                        this.state.monthlysalesdd[
+                                            row.sale_year.toString() + row.sale_month.toString()
+                                        ]
                                     }
                                     columns={columns_dd}
                                     showPagination={false}

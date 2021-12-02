@@ -22,8 +22,8 @@ import {
     TableCaption,
     Divider,
 } from '@chakra-ui/react'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
+
 import { Formik, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import RepairVehicleModal from '../_components/RepairVehicleModal'
@@ -151,7 +151,7 @@ const RepairPage = ({ user }) => {
     }
 
     const checkUnfinishedRepair = () => {
-        Axios.get(`${config.apiUrl}/repair/checkrepair/${vehicleData.vin}/${customerData.custid}`)
+        Axios.get(`/repair/checkrepair/${vehicleData.vin}/${customerData.custid}`)
             .then((response) => {
                 setUnfinishedRepair(response.data)
             })
@@ -162,7 +162,7 @@ const RepairPage = ({ user }) => {
     }
 
     const startNewRepair = (data, setSubmitting) => {
-        Axios.post(`${config.apiUrl}/repair/startnew`, data)
+        Axios.post(`/repair/startnew`, data)
             .then((response) => {
                 successToast(response.data.message)
                 checkUnfinishedRepair()
@@ -175,7 +175,7 @@ const RepairPage = ({ user }) => {
     }
 
     const updateLaborCharges = (data, setSubmitting) => {
-        Axios.post(`${config.apiUrl}/repair/updatelaborcharges`, data)
+        Axios.post(`/repair/updatelaborcharges`, data)
             .then((response) => {
                 successToast(response.data.message)
                 checkUnfinishedRepair()
@@ -188,7 +188,7 @@ const RepairPage = ({ user }) => {
     }
 
     const addParts = (data, setSubmitting) => {
-        Axios.post(`${config.apiUrl}/repair/addparts`, data)
+        Axios.post(`/repair/addparts`, data)
             .then((response) => {
                 successToast(response.data.message)
                 checkUnfinishedRepair()
@@ -201,7 +201,7 @@ const RepairPage = ({ user }) => {
     }
 
     const completeRepair = (data, setSubmitting) => {
-        Axios.post(`${config.apiUrl}/repair/complete`, data)
+        Axios.post(`/repair/complete`, data)
             .then((response) => {
                 successToast(response.data.message)
                 checkUnfinishedRepair()

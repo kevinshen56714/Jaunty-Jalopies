@@ -23,8 +23,7 @@ import { AiFillHome, AiOutlineInbox, AiOutlineMenu } from 'react-icons/ai'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import { authenticationService } from '../_services'
 import { Role } from '../_helpers'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
 
 const ReportPageAccess = [Role.Manager, Role.Owner]
 const RepairPageAccess = [Role.ServiceWriter, Role.Owner]
@@ -75,7 +74,7 @@ export default function NavBar(props) {
     }
 
     const resetDB = () => {
-        Axios.post(`${config.apiUrl}/reset`, {})
+        Axios.post(`/reset`, {})
             .then((response) => {
                 toast({
                     title: 'Database Reset!',
@@ -280,7 +279,7 @@ export default function NavBar(props) {
                                     colorScheme="red"
                                     variant="ghost"
                                     size="sm"
-                                    onClic={resetDB}
+                                    onClick={resetDB}
                                 >
                                     Reset DB
                                 </Button>

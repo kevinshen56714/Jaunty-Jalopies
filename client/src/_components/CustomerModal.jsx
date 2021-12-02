@@ -18,8 +18,7 @@ import {
     Alert,
     AlertIcon,
 } from '@chakra-ui/react'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
 import { Formik, Form, ErrorMessage, Field } from 'formik'
 import * as Yup from 'yup'
 
@@ -141,7 +140,7 @@ export default function CustomerModal({ onClose, setCustomerData, toast }) {
     }
 
     const lookUpPerson = (fromAdd, dln) => {
-        Axios.post(`${config.apiUrl}/customer/lookupPerson`, {
+        Axios.post(`/customer/lookupPerson`, {
             dln: dln,
         })
             .then((response) => {
@@ -168,7 +167,7 @@ export default function CustomerModal({ onClose, setCustomerData, toast }) {
     }
 
     const lookUpBusiness = (fromAdd, ein) => {
-        Axios.post(`${config.apiUrl}/customer/lookupBusiness`, {
+        Axios.post(`/customer/lookupBusiness`, {
             ein: ein,
         })
             .then((response) => {
@@ -196,7 +195,7 @@ export default function CustomerModal({ onClose, setCustomerData, toast }) {
 
     const addCustomer = (data, setStatus, setSubmitting) => {
         if (data.customertype == customer.Person) {
-            Axios.post(`${config.apiUrl}/customer/addPerson`, data)
+            Axios.post(`/customer/addPerson`, data)
                 .then((response) => {
                     lookUpPerson(true, data.dln)
                 })
@@ -206,7 +205,7 @@ export default function CustomerModal({ onClose, setCustomerData, toast }) {
                     setSubmitting(false)
                 })
         } else {
-            Axios.post(`${config.apiUrl}/customer/addBusiness`, data)
+            Axios.post(`/customer/addBusiness`, data)
                 .then((response) => {
                     lookUpBusiness(true, data.ein)
                 })

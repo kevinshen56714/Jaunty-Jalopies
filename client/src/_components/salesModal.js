@@ -14,8 +14,7 @@ import {
     Input,
     Button,
 } from '@chakra-ui/react'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
 import { Formik, Field, Form, useFormik } from 'formik'
 
 const validate = (values) => {
@@ -51,7 +50,7 @@ export default function SalesModal({ onClose, customerData, invoicePrice, search
     const [addedSale, setAddedSale] = useState(false)
 
     const addSale = (data, setStatus, setSubmitting) => {
-        Axios.post(`${config.apiUrl}/sale/addsale`, data)
+        Axios.post(`/sale/addsale`, data)
             .then((response) => {
                 lookUpPerson(true, data.custID)
             })
@@ -62,20 +61,19 @@ export default function SalesModal({ onClose, customerData, invoicePrice, search
             })
     }
 
-
     const formik = useFormik({
-        initialValues:{
+        initialValues: {
             spfirstname: customerData.spfirstname,
             splastname: customerData.splastname,
             soldprice: '',
             purchasedate: '',
             vin: searchedVin,
-            custID: customerData.custID
+            custID: customerData.custID,
         },
         onSubmit: (values) => {
             alert(JSON.stringify(values, null, 2))
         },
-    });
+    })
     return (
         <>
             <form onSubmit={formik.handleSubmit}>
@@ -110,7 +108,7 @@ export default function SalesModal({ onClose, customerData, invoicePrice, search
                         </ModalFooter>
                     </ModalContent>
                 </Modal>
-                </form>
+            </form>
         </>
     )
 }

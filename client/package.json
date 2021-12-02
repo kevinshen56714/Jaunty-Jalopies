@@ -9,7 +9,7 @@
   "proxy": "http://localhost:4000",
   "scripts": {
     "start": "webpack-dev-server --open",
-    "build": "webpack --mode=production",
+    "build": "webpack --mode=production --config webpack.config.js",
     "lint": "eslint src/**/*.js src/**/*.jsx"
   },
   "dependencies": {

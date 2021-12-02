@@ -1,6 +1,6 @@
 import React from 'react'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
+
 import ReactTable from 'react-table-6'
 import styled from 'styled-components'
 import { Heading } from '@chakra-ui/react'
@@ -52,7 +52,7 @@ class BelowCostSales extends React.Component {
     }
 
     componentDidMount() {
-        Axios.get(`${config.apiUrl}/belowcostsales`).then((response) => {
+        Axios.get(`/belowcostsales`).then((response) => {
             this.setState({ belowcostsales: response.data.result })
         })
     }

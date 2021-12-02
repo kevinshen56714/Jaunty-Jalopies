@@ -483,3 +483,5 @@ class Reset {
         return db.execute(sql)
     }
 }
+
+module.exports = Reset

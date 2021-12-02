@@ -1,7 +1,7 @@
 /* eslint-disable react/no-children-prop */
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import Axios from 'axios'
+import Axios from '../_helpers/axios'
 import {
     Heading,
     Input,
@@ -22,7 +22,7 @@ import {
     useColorModeValue,
 } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
-import config from 'config'
+
 import { FaShuttleVan, FaTruck, FaCarSide } from 'react-icons/fa'
 import { FiCheckCircle } from 'react-icons/fi'
 import { GiCityCar, GiRaceCar } from 'react-icons/gi'
@@ -172,7 +172,7 @@ export function SearchVehicle({ user, manufacturers, colors }) {
         const { vin, keyword, modelyear, mfrname, color, vehicletype, invoiceprice, greaterThan } =
             obj
         Axios.get(
-            `${config.apiUrl}/vehicle/search/${vin}/${keyword}/${modelyear}/${mfrname}/${color}/${vehicletype}/${invoiceprice}/${greaterThan}`
+            `/vehicle/search/${vin}/${keyword}/${modelyear}/${mfrname}/${color}/${vehicletype}/${invoiceprice}/${greaterThan}`
         )
             .then((response) => {
                 // same vehicle may show up multiple times due to having more than 1 colors
@@ -199,7 +199,7 @@ export function SearchVehicle({ user, manufacturers, colors }) {
     useEffect(() => {
         var mounted = true
 
-        Axios.get(`${config.apiUrl}/vehicle/count`)
+        Axios.get(`/vehicle/count`)
             .then((res) => {
                 if (mounted) {
                     setVehiclCount(res.data[0].TotalVehicleCountForSale)

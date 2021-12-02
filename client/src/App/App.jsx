@@ -19,8 +19,8 @@ import { MonthlySales } from '../MonthlySales'
 import theme from './theme.js'
 import styled from 'styled-components'
 import NavBar from './NavBar'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
+
 import { RepairsManufacturer } from '../RepairsManufacturer'
 import 'react-table-6/react-table.css'
 
@@ -48,8 +48,8 @@ class App extends React.Component {
     componentDidMount() {
         authenticationService.currentUser.subscribe((x) => this.setState({ currentUser: x }))
 
-        const getMfr = Axios.get(`${config.apiUrl}/manufacturer`)
-        const getColor = Axios.get(`${config.apiUrl}/color`)
+        const getMfr = Axios.get(`/manufacturer`)
+        const getColor = Axios.get(`/color`)
         Promise.all([getMfr, getColor])
             .then(([resMfr, resColor]) => {
                 resMfr.data.result.map((item) => {

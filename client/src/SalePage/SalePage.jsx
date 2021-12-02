@@ -14,8 +14,8 @@ import {
 } from '@chakra-ui/react'
 import { Formik, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
+
 import { history } from '@/_helpers'
 
 const FlexWrapper = styled.div`
@@ -112,7 +112,7 @@ const SalePage = (props) => {
     const user = props.location.user
 
     const addSale = (data, setSubmitting) => {
-        Axios.post(`${config.apiUrl}/sale/addSale`, data)
+        Axios.post(`/sale/addSale`, data)
             .then((response) => {
                 setSubmitting(false)
                 toast({

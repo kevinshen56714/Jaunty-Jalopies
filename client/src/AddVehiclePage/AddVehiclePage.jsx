@@ -28,8 +28,8 @@ import {
     SimpleGrid,
     Link,
 } from '@chakra-ui/react'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
+
 import { Formik, Form, ErrorMessage, FieldArray } from 'formik'
 import * as Yup from 'yup'
 import { VehicleType } from '../_helpers'
@@ -134,7 +134,7 @@ const AddVehiclePage = ({ user, manufacturers, colors }) => {
 
     useEffect(() => {
         if (vin) {
-            Axios.get(`${config.apiUrl}/vehicle/vehicledetail/${vin}`).then((res) => {
+            Axios.get(`/vehicle/vehicledetail/${vin}`).then((res) => {
                 getVehicle(res.data[0])
             })
         }
@@ -242,7 +242,7 @@ const AddVehiclePage = ({ user, manufacturers, colors }) => {
     })
 
     const addVehicle = (data, setStatus, setSubmitting) => {
-        Axios.post(`${config.apiUrl}/vehicle/addvehicle`, data)
+        Axios.post(`/vehicle/addvehicle`, data)
             .then((response) => {
                 toast({
                     title: `Vehicle Added!`,

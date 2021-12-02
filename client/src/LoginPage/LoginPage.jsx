@@ -7,8 +7,7 @@ import * as Yup from 'yup'
 import styled from 'styled-components'
 import { authenticationService } from '@/_services'
 import { Container, Heading, Input, Button, FormControl, FormLabel } from '@chakra-ui/react'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
 
 export const LoginWrapper = styled.div`
     display: flex;
@@ -36,7 +35,7 @@ class LoginPage extends React.Component {
     }
 
     authenticate(username, password, setStatus, setSubmitting) {
-        Axios.post(`${config.apiUrl}/user/authenticate`, {
+        Axios.post(`/user/authenticate`, {
             username: username,
             password: password,
         })

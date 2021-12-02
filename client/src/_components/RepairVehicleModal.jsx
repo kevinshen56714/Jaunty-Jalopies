@@ -15,15 +15,14 @@ import {
     Alert,
     AlertIcon,
 } from '@chakra-ui/react'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
 import { Formik, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
 export default function RepairVehicleModal({ onClose, setVehicleData, toast }) {
     const checkVehicleStatus = (data, setStatus, setSubmitting) => {
-        const getIfExist = Axios.get(`${config.apiUrl}/vehicle/${data.vin}`)
-        const getIfSold = Axios.get(`${config.apiUrl}/repair/checkvehicle/${data.vin}`)
+        const getIfExist = Axios.get(`/vehicle/${data.vin}`)
+        const getIfSold = Axios.get(`/repair/checkvehicle/${data.vin}`)
         Promise.all([getIfExist, getIfSold])
             .then(([resIfExist, resIfSold]) => {
                 setVehicleData(resIfSold.data)

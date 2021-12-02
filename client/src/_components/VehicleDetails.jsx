@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState, useRef } from 'react'
 import styled from 'styled-components'
-import { Redirect, withRouter } from 'react-router-dom'
 import {
     useDisclosure,
     Drawer,
@@ -23,8 +22,7 @@ import {
     AccordionPanel,
     AccordionIcon,
 } from '@chakra-ui/react'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
 import { Link } from 'react-router-dom'
 
 export const FlexWrapper = styled.div`
@@ -96,13 +94,13 @@ const VehicleDetails = ({ searchedvin, user, sold }) => {
     const [repair, setRepair] = useState([])
 
     const getVehicleDetail = async () => {
-        const res = await Axios.get(`${config.apiUrl}/vehicle/vehicledetail/${searchedvin}`)
+        const res = await Axios.get(`/vehicle/vehicledetail/${searchedvin}`)
         getVehicle(res.data[0])
 
         if (sold) {
-            const res3 = await Axios.get(`${config.apiUrl}/repair/findrepair/${searchedvin}`)
+            const res3 = await Axios.get(`/repair/findrepair/${searchedvin}`)
             setRepair(res3.data)
-            const res4 = await Axios.get(`${config.apiUrl}/sale/getcusinfo/${searchedvin}`)
+            const res4 = await Axios.get(`/sale/getcusinfo/${searchedvin}`)
             setCustDetails(res4.data)
         }
     }

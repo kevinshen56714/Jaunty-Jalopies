@@ -1,6 +1,6 @@
 import React from 'react'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
+
 import { Heading } from '@chakra-ui/react'
 import ReactTable from 'react-table-6'
 import styled from 'styled-components'
@@ -37,7 +37,7 @@ class PartStatistics extends React.Component {
     }
 
     componentDidMount() {
-        Axios.get(`${config.apiUrl}/part`).then((response) => {
+        Axios.get(`/part`).then((response) => {
             this.setState({ partstats: response.data.result })
         })
     }

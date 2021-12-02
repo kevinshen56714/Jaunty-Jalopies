@@ -1,6 +1,6 @@
 import React from 'react'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
+
 import ReactTable from 'react-table-6'
 import styled from 'styled-components'
 import { Heading } from '@chakra-ui/react'
@@ -33,7 +33,7 @@ class AveTimeInventory extends React.Component {
     }
 
     componentDidMount() {
-        Axios.get(`${config.apiUrl}/avetimeinventory`).then((response) => {
+        Axios.get(`/avetimeinventory`).then((response) => {
             this.setState({ avetimeinventory: response.data.result })
         })
     }

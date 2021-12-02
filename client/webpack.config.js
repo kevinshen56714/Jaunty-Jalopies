@@ -7,7 +7,13 @@ const endpoint =
         : `http://localhost:4000`
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
+    devtool: false,
+    performance: {
+        hints: false,
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000,
+    },
     module: {
         rules: [
             {

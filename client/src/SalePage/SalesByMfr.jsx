@@ -10,10 +10,10 @@ import {
     Tab,
     TabPanel,
     Container,
-    Box
+    Box,
 } from '@chakra-ui/react'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
+
 import { CartesianGrid, XAxis, YAxis, Tooltip, BarChart, Legend, Bar } from 'recharts'
 
 export const OuterContainer = styled.div`
@@ -30,9 +30,9 @@ const SalesByMfr = () => {
 
     useEffect(() => {
         const getAll = async () => {
-            const getMonth = await Axios.get(`${config.apiUrl}/sale/salesbymfr/month`)
-            const getYear = await Axios.get(`${config.apiUrl}/sale/salesbymfr/year`)
-            const getAlltime = await Axios.get(`${config.apiUrl}/sale/salesbymfr/alltime`)
+            const getMonth = await Axios.get(`/sale/salesbymfr/month`)
+            const getYear = await Axios.get(`/sale/salesbymfr/year`)
+            const getAlltime = await Axios.get(`/sale/salesbymfr/alltime`)
             setMonth(getMonth.data)
             setYear(getYear.data)
             setAlltime(getAlltime.data)
@@ -65,11 +65,7 @@ const SalesByMfr = () => {
                                             tickMargin="15"
                                             tickSize="15"
                                         />
-                                        <YAxis
-                                            dataKey="Sales"
-                                            domain={[0, 6]}
-                                           
-                                        />
+                                        <YAxis dataKey="Sales" domain={[0, 6]} />
                                         <Tooltip
                                             wrapperStyle={{ width: 100, backgroundColor: '#ccc' }}
                                         />
@@ -98,11 +94,7 @@ const SalesByMfr = () => {
                                             tickMargin="15"
                                             tickSize="15"
                                         />
-                                        <YAxis
-                                            dataKey="Sales"
-                                            domain={[0, 10]}
-                                          
-                                        />
+                                        <YAxis dataKey="Sales" domain={[0, 10]} />
                                         <Tooltip
                                             wrapperStyle={{ width: 100, backgroundColor: '#ccc' }}
                                         />
@@ -131,11 +123,7 @@ const SalesByMfr = () => {
                                             tickMargin="15"
                                             tickSize="15"
                                         />
-                                        <YAxis
-                                            dataKey="Sales"
-                                            domain={[0, 20]}
-                                           
-                                        />
+                                        <YAxis dataKey="Sales" domain={[0, 20]} />
                                         <Tooltip
                                             wrapperStyle={{ width: 100, backgroundColor: '#ccc' }}
                                         />

@@ -26,8 +26,7 @@ import {
     PopoverArrow,
     PopoverCloseButton,
 } from '@chakra-ui/react'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
 
 export const OuterContainer = styled.div`
     margin: 5% 0;
@@ -54,7 +53,7 @@ const SalesByGross = () => {
 
     useEffect(() => {
         const getAll = async () => {
-            const allCust = await Axios.get(`${config.apiUrl}/sale/salesbygross/allcust`)
+            const allCust = await Axios.get(`/sale/salesbygross/allcust`)
             getCustomers(allCust.data)
         }
         getAll()
@@ -62,7 +61,7 @@ const SalesByGross = () => {
 
     useEffect(() => {
         const getS = async () => {
-            const fetchSales = await Axios.get(`${config.apiUrl}/sale/salesbygross/year/${custID}`)
+            const fetchSales = await Axios.get(`/sale/salesbygross/year/${custID}`)
             getSales(fetchSales.data)
         }
         getS()
@@ -70,9 +69,7 @@ const SalesByGross = () => {
 
     useEffect(() => {
         const getR = async () => {
-            const fetchRepairs = await Axios.get(
-                `${config.apiUrl}/sale/salesbygross/alltime/${custID}`
-            )
+            const fetchRepairs = await Axios.get(`/sale/salesbygross/alltime/${custID}`)
             getRepairs(fetchRepairs.data)
         }
         getR()
@@ -81,11 +78,9 @@ const SalesByGross = () => {
     const handleClick = (e) => {
         let selectedcustID = e.currentTarget.getAttribute('data-id')
         getCustID(selectedcustID)
-        const fetchSales = Axios.get(`${config.apiUrl}/sale/salesbygross/year/${selectedcustID}`)
+        const fetchSales = Axios.get(`/sale/salesbygross/year/${selectedcustID}`)
         getSales(fetchSales.data)
-        const fetchRepairs = Axios.get(
-            `${config.apiUrl}/sale/salesbygross/alltime/${selectedcustID}`
-        )
+        const fetchRepairs = Axios.get(`/sale/salesbygross/alltime/${selectedcustID}`)
         getRepairs(fetchRepairs.data)
     }
 

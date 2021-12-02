@@ -11,8 +11,7 @@ import {
     TabPanel,
     Container,
 } from '@chakra-ui/react'
-import Axios from 'axios'
-import config from 'config'
+import Axios from '../_helpers/axios'
 import { CartesianGrid, XAxis, YAxis, Tooltip, BarChart, Legend, Bar } from 'recharts'
 
 export const OuterContainer = styled.div`
@@ -29,9 +28,9 @@ const SalesByType = () => {
 
     useEffect(() => {
         const getAll = async () => {
-            const getMonth = await Axios.get(`${config.apiUrl}/sale/salesbytype/month`)
-            const getYear = await Axios.get(`${config.apiUrl}/sale/salesbytype/year`)
-            const getAlltime = await Axios.get(`${config.apiUrl}/sale/salesbytype/alltime`)
+            const getMonth = await Axios.get(`/sale/salesbytype/month`)
+            const getYear = await Axios.get(`/sale/salesbytype/year`)
+            const getAlltime = await Axios.get(`/sale/salesbytype/alltime`)
             setMonth(getMonth.data)
             setYear(getYear.data)
             setAlltime(getAlltime.data)

@@ -1,9 +1,7 @@
 import { Step, Steps, useSteps } from 'chakra-ui-steps'
 import React, { useState, useEffect } from 'react'
 import { Heading, Center, Button, Flex, Text, Box, useToast } from '@chakra-ui/react'
-import Axios from 'axios'
-import config from 'config'
-
+import Axios from '../_helpers/axios'
 import SalesModal from './SalesModal'
 import CustomerModal from './CustomerModal'
 const content = (
