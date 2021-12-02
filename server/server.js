@@ -22,7 +22,7 @@ app.use('/belowcostsales', require('./routes/belowcostsales.routes'))
 app.use('/repairsmanufacturer', require('./routes/repairsmanufacturer.routes'))
 app.use('/avetimeinventory', require('./routes/avetimeinventory.routes'))
 app.use('/monthlysales', require('./routes/monthlysales.routes'))
-
+app.use('/reset', require('./routes/reset.routes'))
 
 // global error handler
 

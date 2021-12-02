@@ -15,15 +15,18 @@ const drillDownMonthlySales = (req, res, next) => {
             yearMonthList.map((row) => {
                 allyearMonthQueries.push(MonthlySales.drilldownmonthlysalesmonthyear(row.sale_year, row.sale_month))
             })
+
             Promise.all(allyearMonthQueries)
                 .then((allyearMonthResponses) => {
                     allyearMonthResponses.map((yearMonthResponse, index) => {
                         const sale_year = yearMonthList[index].sale_year
                         const sale_month = yearMonthList[index].sale_month
 
-                        resultObject[(sale_year, sale_month)] = yearMonthResponse[0]
+                        resultObject[sale_year.toString() + sale_month.toString()] = yearMonthResponse[0]
                     })
+                    
                     res.send(resultObject)
+                   
                 })
                 .catch((err) => {
                     console.log(err)

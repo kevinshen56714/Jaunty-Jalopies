@@ -112,7 +112,7 @@ class MonthlySales extends React.Component {
                                 <br />
                                 <ReactTable
                                     data={
-                                        this.state.monthlysalesdd[(row.sale_year, row.sale_month)]
+                                        this.state.monthlysalesdd[row.sale_year.toString() + row.sale_month.toString()]
                                     }
                                     columns={columns_dd}
                                     showPagination={false}

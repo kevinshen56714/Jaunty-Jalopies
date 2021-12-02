@@ -16,16 +16,20 @@ import {
     CloseButton,
     useColorMode,
     Badge,
+    useToast,
 } from '@chakra-ui/react'
 import { IoIosArrowDown } from 'react-icons/io'
 import { AiFillHome, AiOutlineInbox, AiOutlineMenu } from 'react-icons/ai'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import { authenticationService } from '../_services'
 import { Role } from '../_helpers'
+import Axios from 'axios'
+import config from 'config'
 
 const ReportPageAccess = [Role.Manager, Role.Owner]
 const RepairPageAccess = [Role.ServiceWriter, Role.Owner]
 const AddVehiclePageAccess = [Role.InventoryClerk, Role.Owner]
+const ResetAccess = [Role.Owner]
 const reportList = [
     { to: '/salesbycolor', title: 'Sales by Color' },
     { to: '/salesbytype', title: 'Sales by Type' },
@@ -50,6 +54,7 @@ export default function NavBar(props) {
     const tcl = useColorModeValue('gray.900', 'gray.50')
     const dcl = useColorModeValue('gray.500', 'gray.50')
     const [roles, setRoles] = useState([])
+    const toast = useToast()
 
     const checkRoles = () => {
         setRoles([])
@@ -67,6 +72,21 @@ export default function NavBar(props) {
                 }
             })
         }
+    }
+
+    const resetDB = () => {
+        Axios.post(`${config.apiUrl}/reset`, {})
+            .then((response) => {
+                toast({
+                    title: 'Database Reset!',
+                    status: 'success',
+                    duration: 5000,
+                    isClosable: true,
+                })
+            })
+            .catch((error) => {
+                console.log(error.response.data.message)
+            })
     }
 
     useEffect(() => {
@@ -254,6 +274,16 @@ export default function NavBar(props) {
                                         Sign in
                                     </Button>
                                 </NavLink>
+                            )}
+                            {ResetAccess.some((i) => roles.includes(i)) && (
+                                <Button
+                                    colorScheme="red"
+                                    variant="ghost"
+                                    size="sm"
+                                    onClic={resetDB}
+                                >
+                                    Reset DB
+                                </Button>
                             )}
                         </HStack>
                         <IconButton

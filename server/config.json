@@ -1,10 +1,10 @@
 ﻿{
     "database": {
-        "host": "localhost",
+        "host": "us-cdbr-east-04.cleardb.com",
         "port": 3306,
-        "user": "root",
-        "password": "root",
-        "database": "jaunty_jalopies"
+        "user": "bdf853fbace400",
+        "password": "09f47300",
+        "database": "heroku_a31d2adc0548bc0"
     },
     "secret": "team052"
 }
