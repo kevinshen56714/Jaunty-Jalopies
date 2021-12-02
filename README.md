@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/baa0ac39-5e57-4a26-ac45-42f04171b650/deploy-status)](https://app.netlify.com/sites/jaunty-jalopies/deploys)
+
 # Connection to the server MySQL database through MysQL workbench
 
 ```
