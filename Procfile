@@ -1,1 +1,1 @@
-web: ls && node ./index.js
+web: node server/server.js
