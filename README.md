@@ -2,6 +2,8 @@
 
 This is a car transaction CRUD application built with the MERN (MySQL-Express-React-Node) stack for different roles (owner, manager, salesperson, clerk) to trade/maintain vehicles.
 
+![Screenshot 2022-04-14 120032](https://user-images.githubusercontent.com/11501902/163429221-ae831093-c474-4133-aec8-a125b14ad734.png)
+
 ## What's included? - [Check the website](https://jaunty-jalopies.netlify.app)
 - Object-oriented designs such as entity relationship diagram and designed database schema
 - Promise based HTTP client via Axios
