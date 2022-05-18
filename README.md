@@ -9,3 +9,6 @@ This is a car transaction CRUD application built with the MERN (MySQL-Express-Re
 - Promise based HTTP client via Axios
 - User-specific interface via React
 - Server API routes/controllers/models for MySQL database queries.
+
+### Admin View
+- To check out admin view, you can login with the owner's account: `roland` and password: `roland`
